@@ -76,7 +76,11 @@ export const SuperpowersPlugin = async ({ client, directory }) => {
     const toolMapping = `**Tool Mapping for OpenCode:**
 When skills request actions, substitute OpenCode equivalents:
 - Create or update todos → \`todowrite\`
-- \`Subagent (general-purpose):\` → \`task\` with \`subagent_type: "general"\`
+- \`Subagent (<name>):\` template → \`task\` with \`subagent_type: "<name>"\`
+  (use the exact name verbatim); if the header still says \`general-purpose\`,
+  use \`task\` with \`subagent_type: "general"\`
+- Codebase exploration / research with no specific skill template → \`task\`
+  with \`subagent_type: "superpowers-explore"\`
 - Invoke a skill → OpenCode's native \`skill\` tool
 - Read files → \`read\`
 - Create, edit, or delete files → \`apply_patch\`

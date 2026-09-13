@@ -185,21 +185,23 @@ implementation.
 
 Use the least powerful model that can handle each role to conserve cost and increase speed.
 
-**Mechanical implementation tasks** (isolated functions, clear specs, 1-2 files): use a fast, cheap model. Most implementation tasks are mechanical when the plan is well-specified.
+**Mechanical implementation tasks** (isolated functions, clear specs, 1-2 files): use a fast, cheap model. Most implementation tasks are mechanical when the plan is well-specified. **(OpenCode: `superpowers-implementer-cheap`)**
 
-**Integration and judgment tasks** (multi-file coordination, pattern matching, debugging): use a standard model.
+**Integration and judgment tasks** (multi-file coordination, pattern matching, debugging): use a standard model. **(OpenCode: `superpowers-implementer`)**
 
 **Architecture and design tasks**: use the most capable available model.
 The final whole-branch review is one of these — dispatch it on the most
-capable available model, not the session default.
+capable available model, not the session default. **(OpenCode: `superpowers-toptier`)**
 
 **Review tasks**: choose the model with the same judgment, scaled to the
 diff's size, complexity, and risk. A small mechanical diff does not need the
 most capable model; a subtle concurrency change does. Scoped re-reviews of
-small fix diffs take a cheap-to-mid tier.
+small fix diffs take a cheap-to-mid tier. **(OpenCode: `superpowers-reviewer`
+for standard task/code reviews, `superpowers-rereview` for scoped
+re-reviews.)**
 
 **Fix-loop escalation (rounds 4-5)**: use a model at least one tier above
-the implementer that got stuck.
+the implementer that got stuck. **(OpenCode: `superpowers-implementer-escalated`)**
 
 **Always specify the model explicitly when dispatching a subagent.** An
 omitted model inherits your session's model — often the most capable and
@@ -449,8 +451,8 @@ The final whole-branch review gets a package too: run
 branch started from, e.g. `git merge-base main HEAD`) and include the
 printed path in the final review dispatch, so the final reviewer reads
 one file instead of re-deriving the branch diff with git commands. Dispatch
-on the most capable available model (see Model Selection), using
-superpowers:requesting-code-review's
+a `superpowers-toptier` subagent (the most capable available model — see
+Model Selection), using superpowers:requesting-code-review's
 [code-reviewer.md](../requesting-code-review/code-reviewer.md). Point it at
 the ledger's deferred-minor and parked lines so it can triage which must be
 fixed before merge.

@@ -3,10 +3,14 @@
 Use this template when dispatching an implementer subagent.
 
 ```
-Subagent (general-purpose):
+Subagent ([SUBAGENT_TYPE — REQUIRED: choose per SKILL.md Model Selection.
+          One of: superpowers-implementer-cheap (mechanical, 1-2 files,
+          complete spec) | superpowers-implementer (integration/judgment,
+          the floor) | superpowers-implementer-escalated (fix-loop rounds
+          4-5) | superpowers-toptier (architecture/design judgment). An
+          omitted subagent_type silently inherits the session's most
+          expensive agent.]):
   description: "Implement Task N: [task name]"
-  model: [MODEL — REQUIRED: choose per SKILL.md Model Selection; an omitted
-         model silently inherits the session's most expensive one]
   prompt: |
     You are implementing Task N: [task name]
 

@@ -107,7 +107,8 @@ The plugin does two things:
 Skills speak in actions rather than naming any one runtime's tools. On OpenCode these resolve to:
 
 - "Create a todo" / "mark complete in todo list" → `todowrite`
-- `Subagent (general-purpose):` template → OpenCode's `task` tool with `subagent_type: "general"` (or `"explore"` for codebase exploration)
+- `Subagent (<name>):` template → OpenCode's `task` tool with `subagent_type: "<name>"` (used verbatim); if the header still says `general-purpose`, use `subagent_type: "general"`
+- Codebase exploration / research with no specific skill template → `task` with `subagent_type: "superpowers-explore"`
 - "Invoke a skill" → OpenCode's native `skill` tool
 - "Read a file" → `read`
 - "Create a file" / "edit a file" / "delete a file" → `apply_patch`
